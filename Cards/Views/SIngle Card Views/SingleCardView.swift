@@ -10,7 +10,7 @@ struct SingleCardView: View {
     
     var body: some View {
         NavigationStack {
-            Color.yellow
+            content
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Done") {
@@ -27,6 +27,24 @@ struct SingleCardView: View {
                         Text(String(describing: item))
                     }
                 }
+        }
+    }
+    
+    var content: some View {
+        ZStack {
+            Group {
+                Capsule()
+                    .foregroundStyle(.yellow)
+                Text("Resize Me!")
+                    .font(.system(size: 500))
+                    .minimumScaleFactor(0.01)
+                    .lineLimit(1)
+                    .fontWeight(.bold)
+            }
+            .resizableView()
+            Circle()
+                .resizableView()
+                .offset(CGSize(width: 50, height: 200))
         }
     }
 }
