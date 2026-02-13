@@ -48,5 +48,6 @@ struct BottomToolbar: View {
 struct BottomToolbar_Previews: PreviewProvider {
     static var previews: some View {
         BottomToolbar(modal: .constant(.stickerModal))
+            .padding()
     }
 }
