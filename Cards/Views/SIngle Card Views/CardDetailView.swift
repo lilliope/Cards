@@ -13,11 +13,23 @@ struct CardDetailView: View {
             card.backgroundColor
             ForEach($card.elements, id: \.id) { $element in
                 CardElementView(element: element)
+                    .elementContextMenu(
+                        card: $card,
+                        element: $element)
                     .resizableView(transform: $element.transform)
                     .frame(
                         width: element.transform.size.width,
                         height: element.transform.size.height)
             }
+        }
+        .dropDestination(for: CustomTransfer.self) { items, location in
+            print(location)
+            Task {
+                await MainActor.run {
+                    card.addElements(from: items)
+                }
+            }
+            return !items.isEmpty
         }
     }
 }
