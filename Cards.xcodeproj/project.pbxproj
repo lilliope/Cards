@@ -15,6 +15,8 @@
 		5954FFDE2F3D8D8200A6821A /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5954FFDD2F3D8D8200A6821A /* ColorExtensions.swift */; };
 		5970D74D2F48D06D00E0AC4D /* CustomTransfer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5970D74C2F48D06D00E0AC4D /* CustomTransfer.swift */; };
 		5970D74F2F48F64800E0AC4D /* ElementContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5970D74E2F48F64800E0AC4D /* ElementContextMenu.swift */; };
+		5995F7B42F49817900E3D977 /* Shapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995F7B32F49817900E3D977 /* Shapes.swift */; };
+		5995F7B62F498B0000E3D977 /* FrameModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5995F7B52F498B0000E3D977 /* FrameModal.swift */; };
 		599DF0F02F3EC61800AC870C /* TextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599DF0EF2F3EC61800AC870C /* TextExtensions.swift */; };
 		599DF0F22F3EC6FF00AC870C /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599DF0F12F3EC6FF00AC870C /* PreviewData.swift */; };
 		599DF0F42F3ECA1100AC870C /* CardToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 599DF0F32F3ECA1100AC870C /* CardToolbar.swift */; };
@@ -45,6 +47,8 @@
 		5954FFDD2F3D8D8200A6821A /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		5970D74C2F48D06D00E0AC4D /* CustomTransfer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTransfer.swift; sourceTree = "<group>"; };
 		5970D74E2F48F64800E0AC4D /* ElementContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementContextMenu.swift; sourceTree = "<group>"; };
+		5995F7B32F49817900E3D977 /* Shapes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shapes.swift; sourceTree = "<group>"; };
+		5995F7B52F498B0000E3D977 /* FrameModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameModal.swift; sourceTree = "<group>"; };
 		599DF0EF2F3EC61800AC870C /* TextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtensions.swift; sourceTree = "<group>"; };
 		599DF0F12F3EC6FF00AC870C /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		599DF0F32F3ECA1100AC870C /* CardToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardToolbar.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 				599DF0F52F3ECCC200AC870C /* CardElement.swift */,
 				599DF0F92F3ECD4D00AC870C /* CardStore.swift */,
 				5970D74C2F48D06D00E0AC4D /* CustomTransfer.swift */,
+				5995F7B32F49817900E3D977 /* Shapes.swift */,
 				5954FFD52F3D789100A6821A /* Transform.swift */,
 			);
 			path = Model;
@@ -180,6 +185,7 @@
 		59E9DF8C2F402A520090C0B6 /* Card Modal Views */ = {
 			isa = PBXGroup;
 			children = (
+				5995F7B52F498B0000E3D977 /* FrameModal.swift */,
 				5953854E2F48C3B80002B872 /* PhotosModal.swift */,
 				59E9DF8D2F402A7A0090C0B6 /* StickerModal.swift */,
 			);
@@ -264,6 +270,7 @@
 				59E111752F3D4C7E008FE3D8 /* CardThumbnail.swift in Sources */,
 				5954FFD92F3D7AF800A6821A /* Operators.swift in Sources */,
 				59E111672F3D4B4E008FE3D8 /* ContentView.swift in Sources */,
+				5995F7B62F498B0000E3D977 /* FrameModal.swift in Sources */,
 				5954FFD32F3D773800A6821A /* ResizableView.swift in Sources */,
 				599DF0F22F3EC6FF00AC870C /* PreviewData.swift in Sources */,
 				599DF0F82F3ECCF800AC870C /* Card.swift in Sources */,
@@ -274,6 +281,7 @@
 				59E1117B2F3D5128008FE3D8 /* BottomToolbar.swift in Sources */,
 				5970D74F2F48F64800E0AC4D /* ElementContextMenu.swift in Sources */,
 				5954FFD62F3D789100A6821A /* Transform.swift in Sources */,
+				5995F7B42F49817900E3D977 /* Shapes.swift in Sources */,
 				599DF0F02F3EC61800AC870C /* TextExtensions.swift in Sources */,
 				599DF0FE2F3ED39000AC870C /* CardElementView.swift in Sources */,
 				5954FFDB2F3D8C5F00A6821A /* Settings.swift in Sources */,

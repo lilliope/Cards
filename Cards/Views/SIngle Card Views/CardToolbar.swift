@@ -6,9 +6,11 @@ import SwiftUI
 
 struct CardToolbar: ViewModifier {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var store: CardStore
     @Binding var currentModal: ToolbarSelection?
     @Binding var card: Card
     @State private var stickerImage: UIImage?
+    @State private var frameIndex: Int?
     
     func body(content: Content) -> some View {
         content
@@ -36,6 +38,16 @@ struct CardToolbar: ViewModifier {
                                 card.addElement(uiImage: stickerImage)
                             }
                             stickerImage = nil
+                        }
+                case .frameModal:
+                    FrameModal(frameIndex: $frameIndex)
+                        .onDisappear {
+                            if let frameIndex {
+                                card.update(
+                                    store.selectedElement,
+                                    frameIndex: frameIndex)
+                            }
+                            frameIndex = nil
                         }
                 default:
                     Text(String(describing: item))
@@ -78,5 +90,6 @@ struct CardToolbar_Previews: PreviewProvider {
             .modifier(CardToolbar(
                 currentModal: .constant(nil),
                 card: .constant(Card())))
+            .environmentObject(CardStore(defaultData: true))
     }
 }

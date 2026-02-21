@@ -14,16 +14,19 @@ struct ElementContextMenu: ViewModifier {
                 Button {
                     if let element = element as? TextElement {
                         UIPasteboard.general.string = element.text
-                    } else if let element = element as? ImageElement,
+                    }
+                    else if let element = element as? ImageElement,
                         let image = element.uiImage {
                             UIPasteboard.general.image = image
                     }
-                } label: {
+                }
+                label: {
                     Label("Copy", systemImage: "doc.on.doc")
                 }
                 Button(role: .destructive) {
                     card.remove(element)
-                } label: {
+                }
+                label: {
                     Label("Delete", systemImage: "trash")
                 }
             }

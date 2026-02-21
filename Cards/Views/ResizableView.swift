@@ -10,17 +10,6 @@ struct ResizableView: ViewModifier {
     @State private var previousRotation: Angle = .zero
     @State private var scale: CGFloat = 1.0
     
-    func body(content: Content) -> some View {
-        content
-            .frame(width: transform.size.width,
-                   height: transform.size.height)
-            .rotationEffect(transform.rotation)
-            .scaleEffect(scale)
-            .offset(transform.offset)
-            .gesture(dragGesture)
-            .gesture(SimultaneousGesture(rotationGesture, scaleGesture))
-    }
-    
     var dragGesture: some Gesture {
         DragGesture()
             .onChanged { value in
@@ -53,15 +42,30 @@ struct ResizableView: ViewModifier {
                 self.scale = 1.0
             }
     }
+    
+    func body(content: Content) -> some View {
+        content
+            .frame(
+                width: transform.size.width,
+                height: transform.size.height)
+            .rotationEffect(transform.rotation)
+            .scaleEffect(scale)
+            .offset(transform.offset)
+            .gesture(dragGesture)
+            .gesture(SimultaneousGesture(rotationGesture, scaleGesture))
+            .onAppear {
+                previousOffset = transform.offset
+            }
+    }
 }
 
 struct ResizableView_Previews: PreviewProvider {
     struct ResizableViewPreview: View {
         @State var transform = Transform()
         var body: some View {
-            RoundedRectangle(cornerRadius: 30)
+            RoundedRectangle(cornerRadius: 30.0)
                 .foregroundStyle(.blue)
-                .resizableView(transform: .constant(Transform()))
+                .resizableView(transform: $transform)
         }
     }
     static var previews: some View {

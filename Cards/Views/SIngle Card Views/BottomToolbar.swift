@@ -29,6 +29,7 @@ struct ToolbarButton: View {
 }
 
 struct BottomToolbar: View {
+    @EnvironmentObject var store: CardStore
     @Binding var card: Card
     @Binding var modal: ToolbarSelection?
     
@@ -42,15 +43,24 @@ struct BottomToolbar: View {
                     label: {
                         PhotosModal(card: $card)
                     }
+                case .frameModal:
+                    defaultButton(selection)
+                        .disabled(
+                            store.selectedElement == nil
+                            || !(store.selectedElement is ImageElement))
                 default:
-                    Button {
-                        modal = selection
-                    }
-                    label: {
-                        ToolbarButton(modal: selection)
-                    }
+                    defaultButton(selection)
                 }
             }
+        }
+    }
+    
+    func defaultButton(_ selection: ToolbarSelection) -> some View {
+        Button {
+            modal = selection
+        }
+        label: {
+            ToolbarButton(modal: selection)
         }
     }
 }
@@ -60,5 +70,6 @@ struct BottomToolbar_Previews: PreviewProvider {
         BottomToolbar(
             card: .constant(Card()),
             modal: .constant(.stickerModal))
+        .environmentObject(CardStore())
     }
 }

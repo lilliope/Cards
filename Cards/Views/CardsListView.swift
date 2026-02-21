@@ -28,7 +28,8 @@ struct CardsListView: View {
                         .contextMenu {
                             Button(role: .destructive) {
                                 store.remove(card)
-                            } label: {
+                            }
+                            label: {
                                 Label("Delete", systemImage: "trash")
                             }
                         }
