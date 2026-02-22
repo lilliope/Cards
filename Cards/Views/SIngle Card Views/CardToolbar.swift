@@ -11,6 +11,7 @@ struct CardToolbar: ViewModifier {
     @Binding var card: Card
     @State private var stickerImage: UIImage?
     @State private var frameIndex: Int?
+    @State private var textElement = TextElement()
     
     func body(content: Content) -> some View {
         content
@@ -48,6 +49,14 @@ struct CardToolbar: ViewModifier {
                                     frameIndex: frameIndex)
                             }
                             frameIndex = nil
+                        }
+                case .textModal:
+                    TextModal(textElement: $textElement)
+                        .onDisappear {
+                            if !textElement.text.isEmpty {
+                                card.addElement(text: textElement)
+                            }
+                            textElement = TextElement()
                         }
                 default:
                     Text(String(describing: item))

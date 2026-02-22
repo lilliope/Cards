@@ -7,6 +7,7 @@ import SwiftUI
 struct SingleCardView: View {
     @State private var currentModal: ToolbarSelection?
     @Binding var card: Card
+    @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
         NavigationStack {
@@ -14,6 +15,14 @@ struct SingleCardView: View {
                 .modifier(CardToolbar(
                     currentModal: $currentModal,
                     card: $card))
+                .onDisappear {
+                    card.save()
+                }
+                .onChange(of: scenePhase) { newScenePhase in
+                    if newScenePhase == .inactive {
+                        card.save()
+                    }
+                }
         }
     }
 }

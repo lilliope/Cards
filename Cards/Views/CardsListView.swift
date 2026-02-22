@@ -9,14 +9,19 @@ struct CardsListView: View {
     @State private var selectedCard: Card?
     
     var body: some View {
-        list
-            .fullScreenCover(item: $selectedCard) { card in
-                if let index = store.index(for: card) {
-                    SingleCardView(card: $store.cards[index])
-                }
-                else {
-                    fatalError("Unable to locate selected card")
-                }
+        VStack {
+            list
+                .fullScreenCover(item: $selectedCard) { card in
+                    if let index = store.index(for: card) {
+                        SingleCardView(card: $store.cards[index])
+                    }
+                    else {
+                        fatalError("Unable to locate selected card")
+                    }
+            }
+            Button("Add") {
+                selectedCard = store.addCard()
+            }
         }
     }
     
