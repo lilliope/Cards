@@ -23,9 +23,7 @@ struct PhotosModal: View {
                             case .success(let data):
                                 if let data,
                                    let uiImage = UIImage(data: data) {
-                                    await MainActor.run {
-                                        card.addElement(uiImage: uiImage)
-                                    }
+                                    card.addElement(uiImage: uiImage)
                                 }
                             case .failure(let failure):
                                 fatalError("Image transfer failed: \(failure)")

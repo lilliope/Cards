@@ -24,6 +24,19 @@ struct CardToolbar: ViewModifier {
                         dismiss()
                     }
                 }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    let uiImage = UIImage.screenshot(
+                        card: card,
+                        size: Settings.cardSize)
+                    let image = Image(uiImage: uiImage)
+                    ShareLink(
+                        item: image,
+                        preview: SharePreview(
+                            "Card",
+                            image: image)) {
+                                Image(systemName: "square.and.arrow.up")
+                            }
+                }
                 ToolbarItem(placement: .bottomBar) {
                     BottomToolbar(
                         card: $card,
@@ -90,15 +103,5 @@ struct CardToolbar: ViewModifier {
             label: {
                 Label("Add", systemImage: "ellipsis.circle")
             }
-    }
-}
-
-struct CardToolbar_Previews: PreviewProvider {
-    static var previews: some View {
-        Color.yellow
-            .modifier(CardToolbar(
-                currentModal: .constant(nil),
-                card: .constant(Card())))
-            .environmentObject(CardStore(defaultData: true))
     }
 }
